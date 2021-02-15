@@ -1,6 +1,9 @@
 package com.kyser.daynotes.services.models;
 
-public class Note {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Note{
 
     private int id;
     private int key;
@@ -56,4 +59,5 @@ public class Note {
     public String getDate() {
         return date;
     }
+
 }

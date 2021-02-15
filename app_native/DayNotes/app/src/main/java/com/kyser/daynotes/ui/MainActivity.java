@@ -30,16 +30,19 @@ public class MainActivity extends AppCompatActivity {
         mainBinding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG) .setAction("Action", null).show();
+               // Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG) .setAction("Action", null).show();
                 Navigation.findNavController(mainBinding.navHostFragment).navigate(R.id.action_splash_to_noteGrid);
             }
         });
-
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         mainBinding = null;
+    }
+
+    public NavController getNavController() {
+        return Navigation.findNavController(mainBinding.navHostFragment);
     }
 }
