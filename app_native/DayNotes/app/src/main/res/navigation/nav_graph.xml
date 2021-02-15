@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splash">
+
+    <fragment
+        android:id="@+id/splash"
+        android:name="com.kyser.daynotes.ui.Splash"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splash_to_noteGrid"
+            app:destination="@id/noteGrid" />
+    </fragment>
+    <fragment
+        android:id="@+id/noteGrid"
+        android:name="com.kyser.daynotes.ui.NoteGrid"
+        android:label="note_grid_fragment"
+        tools:layout="@layout/note_grid_fragment">
+        <action
+            android:id="@+id/action_noteGrid_to_noteView"
+            app:destination="@id/noteView" />
+    </fragment>
+    <fragment
+        android:id="@+id/noteView"
+        android:name="com.kyser.daynotes.ui.NoteView"
+        android:label="note_view_fragment"
+        tools:layout="@layout/note_view_fragment" />
+</navigation>
