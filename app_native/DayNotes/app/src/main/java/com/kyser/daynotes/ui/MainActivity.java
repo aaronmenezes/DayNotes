@@ -4,10 +4,13 @@ import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.kyser.daynotes.R;
 import com.kyser.daynotes.databinding.ActivityMainBinding;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.View;
 
@@ -28,8 +31,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG) .setAction("Action", null).show();
+                Navigation.findNavController(mainBinding.navHostFragment).navigate(R.id.action_splash_to_noteGrid);
             }
         });
+
     }
 
     @Override

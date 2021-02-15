@@ -1,6 +1,6 @@
 package com.kyser.daynotes.ui;
 
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 
@@ -8,10 +8,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.kyser.daynotes.services.models.Note;
 import com.kyser.daynotes.viewmodel.NoteGridViewModel;
 import com.kyser.daynotes.R;
 
@@ -32,7 +34,11 @@ public class NoteGrid extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(NoteGridViewModel.class);
+        mViewModel = new ViewModelProvider.NewInstanceFactory().create( NoteGridViewModel.class);
+        mViewModel.getNoteList().observe( (MainActivity)getContext(),notes -> {
+            for(Note t : notes)
+              System.out.println(t.getName());
+        });
     }
 
 }
