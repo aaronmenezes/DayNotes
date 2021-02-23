@@ -53,9 +53,10 @@ class DatabaseInstance:
 		self.get_db().commit()
 		return []
 
-	def update_note(self,id,body):
+	def update_note(self,id,name,body):
 		cur= self.get_db().cursor()
-		cur.execute("UPDATE notes SET body = '"+body+"' WHERE key = "+id) 
+		cur.execute("UPDATE note_list SET name = '"+name+"' WHERE id = "+id) 
+		cur.execute("UPDATE notes SET body = ? WHERE key = ? ",(body,id))  
 		self.get_db().commit()
 		return []		
 

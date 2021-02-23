@@ -34,6 +34,7 @@ public class NoteGrid extends Fragment {
 
     private  NoteGridAdaptor.ItemEvent mItemEvent = note -> {
         Bundle bundle = new Bundle();
+        bundle.putInt("id",note.getId());
         bundle.putString("title",note.getName());
         bundle.putString("note",note.getBody());
         ((MainActivity)getActivity()).getNavController().navigate(R.id.action_noteGrid_to_noteView,bundle);

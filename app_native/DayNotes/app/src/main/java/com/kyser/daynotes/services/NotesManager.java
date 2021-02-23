@@ -14,7 +14,8 @@ import retrofit2.http.Query;
 
 public class NotesManager {
 
-    final private String BASE_URL="http://10.0.2.2:8080";
+//    final private String BASE_URL="http://10.0.2.2:8080";
+    final private String BASE_URL="http://192.168.1.3:8080";
     private static NotesManager instance;
     private final NoteService noteService;
 
@@ -48,6 +49,20 @@ public class NotesManager {
 
     public void addNewNote(String name , String date ,String priority , String body){
         noteService.addNewNote(name,date,priority,body).enqueue(new Callback<List<Note>>() {
+            @Override
+            public void onResponse(Call<List<Note>> call, Response<List<Note>> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Note>> call, Throwable t) {
+                System.out.println(t.getMessage());
+            }
+        });
+    }
+
+    public void updateNote(int id, String name , String body){
+        noteService.updateNote(id, name,body).enqueue(new Callback<List<Note>>() {
             @Override
             public void onResponse(Call<List<Note>> call, Response<List<Note>> response) {
 

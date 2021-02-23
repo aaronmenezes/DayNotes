@@ -39,7 +39,7 @@ def add_new_note():
 @app.route("/updateNote")
 def update_note():
 	print(request.args)
-	cur = DatabaseInstance.getInstance().update_note(request.args['id'],request.args['body'])
+	cur = DatabaseInstance.getInstance().update_note(request.args['id'],request.args['name'],request.args['body'])
 	return jsonify(cur)
 
 @app.route("/updateNotePriority")
