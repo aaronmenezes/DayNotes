@@ -34,8 +34,8 @@ public class NoteView extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-       // mViewModel = ViewModelProviders.of(this).get(NoteViewViewModel.class);
-        mFragmentBinding.body.setText(getArguments().getString("note"));
+        mFragmentBinding.back.setOnClickListener(view -> (getActivity()).onBackPressed());
+        mFragmentBinding.noteTitleInp.setText(getArguments().getString("title"));
+        mFragmentBinding.noteBodyInp.setText(getArguments().getString("note"));
     }
-
 }

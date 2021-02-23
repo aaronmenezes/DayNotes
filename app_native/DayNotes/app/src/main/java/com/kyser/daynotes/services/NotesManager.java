@@ -10,6 +10,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Query;
 
 public class NotesManager {
 
@@ -36,6 +37,20 @@ public class NotesManager {
             @Override
             public void onResponse(Call<List<Note>> call, Response<List<Note>> response) {
                 notelist.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<Note>> call, Throwable t) {
+                System.out.println(t.getMessage());
+            }
+        });
+    }
+
+    public void addNewNote(String name , String date ,String priority , String body){
+        noteService.addNewNote(name,date,priority,body).enqueue(new Callback<List<Note>>() {
+            @Override
+            public void onResponse(Call<List<Note>> call, Response<List<Note>> response) {
+
             }
 
             @Override
