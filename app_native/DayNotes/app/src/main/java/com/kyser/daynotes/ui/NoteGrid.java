@@ -7,14 +7,12 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.PopupMenu;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
@@ -37,7 +35,7 @@ public class NoteGrid extends Fragment {
 
     private  NoteGridAdaptor.ItemEvent mItemEvent = new NoteGridAdaptor.ItemEvent() {
         @Override
-        public void onItemClick(Note note) {
+        public void onItemClick(View itemView, Note note) {
             Bundle bundle = new Bundle();
             bundle.putInt("id",note.getId());
             bundle.putString("title",note.getName());
@@ -46,10 +44,25 @@ public class NoteGrid extends Fragment {
         }
 
         @Override
-        public void onItemDeleteClick(Note note) {
+        public void onItemDeleteClick(View itemView, Note note) {
             showDeleteDialog(note);
+            showOptionList(itemView,note);
         }
     };
+
+    private void showOptionList(View itemView, Note note) {
+        PopupMenu popupMenu = new PopupMenu(getContext(),itemView);
+        popupMenu.getMenuInflater().inflate(R.menu.note_options,popupMenu.getMenu());
+        popupMenu.setOnMenuItemClickListener(menuItem -> {
+            if(menuItem.getItemId() == R.id.option_2)
+                deleteNote(note);
+            if(menuItem.getItemId() == R.id.option_1)
+                 popupMenu.dismiss();
+            return false;
+        });
+        popupMenu.setOnDismissListener(popupMenu1 -> {});
+        popupMenu.show();
+    }
 
     private void showDeleteDialog(Note note) {
         new MaterialAlertDialogBuilder(getContext())

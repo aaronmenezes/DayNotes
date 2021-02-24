@@ -45,7 +45,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_margin="@dimen/fab_margin"
-        android:backgroundTint="@color/note_priority_1"
-        app:srcCompat="@drawable/note_add" />
+        android:background="@color/add_fab"
+        app:srcCompat="@drawable/outline_post_add_24" />
 
 </RelativeLayout>

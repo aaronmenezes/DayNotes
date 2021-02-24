@@ -5,11 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.kyser.daynotes.R;
 import com.kyser.daynotes.databinding.NoteGridItemBinding;
 import com.kyser.daynotes.services.models.Note;
-import com.kyser.daynotes.ui.MainActivity;
-import com.kyser.daynotes.ui.NoteGrid;
 
 import java.util.List;
 
@@ -23,8 +20,8 @@ public class NoteGridAdaptor extends RecyclerView.Adapter<NoteGridAdaptor.Holder
     private ItemEvent itemEvent;
 
     public interface ItemEvent{
-        public void onItemClick(Note note);
-        public void onItemDeleteClick(Note note);
+        public void onItemClick(View itemView, Note note);
+        public void onItemDeleteClick(View itemView, Note note);
     }
 
     public NoteGridAdaptor(Context mContext) {
@@ -50,8 +47,8 @@ public class NoteGridAdaptor extends RecyclerView.Adapter<NoteGridAdaptor.Holder
     public void onBindViewHolder(@NonNull Holder holder, int position) {
         holder.itemBinding.itemTitle.setText(noteList.get(position).getName());
         holder.itemBinding.itemBody.setText(noteList.get(position).getBody());
-        holder.itemBinding.getRoot().setOnClickListener(view ->  itemEvent.onItemClick(noteList.get(position)));
-        holder.itemBinding.itemDelete.setOnClickListener(view -> itemEvent.onItemDeleteClick(noteList.get(position)));
+        holder.itemBinding.getRoot().setOnClickListener(view ->  itemEvent.onItemClick(view,noteList.get(position)));
+        holder.itemBinding.itemDelete.setOnClickListener(view -> itemEvent.onItemDeleteClick(view,noteList.get(position)));
     }
 
     @Override

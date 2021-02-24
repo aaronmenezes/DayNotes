@@ -16,7 +16,7 @@
         android:layout_alignParentTop="true"
         android:padding="0dp"
         android:backgroundTint="@android:color/transparent"
-        app:srcCompat="@drawable/close" />
+        app:srcCompat="@drawable/baseline_more_horiz_18" />
 
     <TextView
         android:id="@+id/item_title"
