@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.NoteView">
 
 
@@ -27,26 +28,50 @@
 
         </LinearLayout>
 
-        <EditText
-            android:id="@+id/note_title_inp"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:ems="10"
-            android:hint="@string/note_title_placeholder"
-            android:inputType="textPersonName"   />
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxStrokeColor="@color/note_priority_1"
+            app:boxStrokeWidth="2dp"
+            android:hint="@string/note_title_placeholder">
 
-        <EditText
-            android:id="@+id/note_body_inp"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/note_title_inp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand"
+                android:ems="10" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:padding="10dp"
-            android:layout_marginTop="20dp"
-            android:gravity="start|top"
-            android:hint="@string/note_body_placeholder"
-            android:minLines="5"
-            android:inputType="textMultiLine" />
+            android:layout_height="match_parent">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textField2"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/note_body_placeholder"
+                app:boxStrokeColor="@color/note_priority_1"
+                app:boxStrokeWidth="2dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/note_body_inp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textMultiLine"
+                    android:fontFamily="@font/quicksand"
+                    android:minLines="5" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </ScrollView>
+
+
 
     </LinearLayout>
 

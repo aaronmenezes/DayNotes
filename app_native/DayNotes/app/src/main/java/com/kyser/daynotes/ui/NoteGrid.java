@@ -16,7 +16,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.snackbar.Snackbar;
 import com.kyser.daynotes.databinding.NoteGridFragmentBinding;
+import com.kyser.daynotes.services.NotesManager;
 import com.kyser.daynotes.services.models.Note;
 import com.kyser.daynotes.ui.adaptor.NoteGridAdaptor;
 import com.kyser.daynotes.ui.components.SpaceItemDecoration;
@@ -32,13 +35,46 @@ public class NoteGrid extends Fragment {
         return new NoteGrid();
     }
 
-    private  NoteGridAdaptor.ItemEvent mItemEvent = note -> {
-        Bundle bundle = new Bundle();
-        bundle.putInt("id",note.getId());
-        bundle.putString("title",note.getName());
-        bundle.putString("note",note.getBody());
-        ((MainActivity)getActivity()).getNavController().navigate(R.id.action_noteGrid_to_noteView,bundle);
+    private  NoteGridAdaptor.ItemEvent mItemEvent = new NoteGridAdaptor.ItemEvent() {
+        @Override
+        public void onItemClick(Note note) {
+            Bundle bundle = new Bundle();
+            bundle.putInt("id",note.getId());
+            bundle.putString("title",note.getName());
+            bundle.putString("note",note.getBody());
+            ((MainActivity)getActivity()).getNavController().navigate(R.id.action_noteGrid_to_noteView,bundle);
+        }
+
+        @Override
+        public void onItemDeleteClick(Note note) {
+            showDeleteDialog(note);
+        }
     };
+
+    private void showDeleteDialog(Note note) {
+        new MaterialAlertDialogBuilder(getContext())
+                .setTitle(getResources().getString(R.string.delete_dialog_title))
+                .setMessage(getResources().getString(R.string.delete_dialog_desc))
+                .setPositiveButton(getResources().getString(R.string.delete_dialog_yes),(dialogInterface, i) -> {deleteNote(note);})
+                .setNegativeButton(getResources().getString(R.string.delete_dialog_no),(dialogInterface, i) -> {dialogInterface.dismiss();})
+                .setNeutralButton(getResources().getString(R.string.delete_dialog_cancel),(dialogInterface, i) -> {dialogInterface.dismiss();})
+                .show();
+    }
+
+    private void deleteNote(Note note) {
+        NotesManager.getInstance().deleteNote(note.getId());
+        updateNoteList();
+    }
+
+    private void updateNoteList() {
+        mViewModel.getNoteList().observe( (MainActivity)getContext(),notes -> {
+            for(Note t : notes)
+                System.out.println(t.getName());
+            ((NoteGridAdaptor)noteGridBinding.noteGrid.getAdapter()).setNoteList(notes);
+            Snackbar.make(getView(), R.string.snack_bar_note_refresh, Snackbar.LENGTH_SHORT)
+                    .show();
+        });
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -54,10 +90,6 @@ public class NoteGrid extends Fragment {
         noteGridBinding.noteGrid.setAdapter(new NoteGridAdaptor(getContext(),mItemEvent));
         noteGridBinding.noteGrid.addItemDecoration(new SpaceItemDecoration(20,20,true));
         mViewModel = new ViewModelProvider.NewInstanceFactory().create( NoteGridViewModel.class);
-        mViewModel.getNoteList().observe( (MainActivity)getContext(),notes -> {
-            for(Note t : notes)
-                System.out.println(t.getName());
-            ((NoteGridAdaptor)noteGridBinding.noteGrid.getAdapter()).setNoteList(notes);
-        });
+        updateNoteList();
     }
 }

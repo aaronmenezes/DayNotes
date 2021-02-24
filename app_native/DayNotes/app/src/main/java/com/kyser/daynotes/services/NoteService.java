@@ -19,4 +19,7 @@ public interface NoteService {
 
     @GET("updateNote")
     Call<List<Note>> updateNote(@Query("id") int id , @Query("name") String name ,  @Query("body") String body);
+
+    @GET("deleteNote")
+    Call<List<Note>> deleteNote(@Query("id") int id );
 }

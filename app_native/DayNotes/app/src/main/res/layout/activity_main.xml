@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryLight"
     tools:context=".ui.MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -19,7 +20,8 @@
             android:textAlignment="center"
             android:text="Daily Notes"
             android:paddingVertical="20dp"
-            android:textSize="20sp"
+            android:fontFamily="@font/quicksand_bold"
+            android:textSize="25sp"
             android:textColor="@color/white"/>
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -43,6 +45,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        android:backgroundTint="@color/note_priority_1"
+        app:srcCompat="@drawable/note_add" />
 
 </RelativeLayout>

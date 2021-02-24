@@ -39,11 +39,11 @@ public class AddNote extends Fragment {
         addNoteBinding.btnSave.setOnClickListener(view->addNewNote());
         return addNoteBinding.getRoot();
     }
-    //http://localhost:8080/addNewNote?name=aaron&date=17-03-2021%205:30:00&priority=1&body=sasdasdasd}
+
     private void addNewNote() {
         SimpleDateFormat s = new SimpleDateFormat("ddMMyyyyhhmmss");
         String format = s.format(new Date());
         NotesManager.getInstance().addNewNote(addNoteBinding.noteTitleInp.getText().toString(),format,"1",addNoteBinding.noteBodyInp.getText().toString());
-
+        getActivity().onBackPressed();
     }
 }

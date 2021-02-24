@@ -1,7 +1,13 @@
 <resources>
     <string name="app_name">DayNotes</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="snack_bar_note_refresh">Fetched updated notes</string>
     <string name="note_add_dir">Add Note Details</string>
     <string name="note_title_placeholder">note title</string>
     <string name="note_body_placeholder">task lists</string>
+    <string name="delete_dialog_title">Delete Note</string>
+    <string name="delete_dialog_desc">Are you sure to delete this note</string>
+    <string name="delete_dialog_yes">Yes</string>
+    <string name="delete_dialog_cancel">Cancel</string>
+    <string name="delete_dialog_no">No</string>
 </resources>

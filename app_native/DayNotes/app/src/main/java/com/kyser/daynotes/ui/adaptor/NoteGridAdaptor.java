@@ -24,6 +24,7 @@ public class NoteGridAdaptor extends RecyclerView.Adapter<NoteGridAdaptor.Holder
 
     public interface ItemEvent{
         public void onItemClick(Note note);
+        public void onItemDeleteClick(Note note);
     }
 
     public NoteGridAdaptor(Context mContext) {
@@ -49,9 +50,8 @@ public class NoteGridAdaptor extends RecyclerView.Adapter<NoteGridAdaptor.Holder
     public void onBindViewHolder(@NonNull Holder holder, int position) {
         holder.itemBinding.itemTitle.setText(noteList.get(position).getName());
         holder.itemBinding.itemBody.setText(noteList.get(position).getBody());
-        holder.itemBinding.getRoot().setOnClickListener(view -> {
-            itemEvent.onItemClick(noteList.get(position));
-        });
+        holder.itemBinding.getRoot().setOnClickListener(view ->  itemEvent.onItemClick(noteList.get(position)));
+        holder.itemBinding.itemDelete.setOnClickListener(view -> itemEvent.onItemDeleteClick(noteList.get(position)));
     }
 
     @Override

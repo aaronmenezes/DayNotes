@@ -5,12 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.AddNote">
-
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="10dp">
+        android:padding="10dp"
+
+        android:orientation="vertical">
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/btn_save"
+        android:orientation="vertical" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -31,38 +36,62 @@
                 android:layout_gravity="center"
                 android:padding="10dp"
                 android:text="@string/note_add_dir"
+                android:fontFamily="@font/quicksand_medium"
                 android:textAlignment="gravity"
                 android:textSize="18sp" />
 
         </LinearLayout>
 
-        <EditText
-            android:id="@+id/note_title_inp"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:layout_marginTop="50dp"
-            android:hint="@string/note_title_placeholder"  />
+            app:boxStrokeColor="@color/note_priority_1"
+            app:boxStrokeWidth="2dp"
+            android:hint="@string/note_title_placeholder">
 
-        <EditText
-            android:id="@+id/note_body_inp"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/note_title_inp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand"
+                android:ems="10" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:padding="10dp"
-            android:layout_marginTop="20dp"
-            android:gravity="start|top"
-            android:hint="@string/note_body_placeholder"
-            android:minLines="5"
-            android:inputType="textMultiLine" />
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp">
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textField2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:boxStrokeColor="@color/note_priority_1"
+                app:boxStrokeWidth="2dp"
+                android:hint="@string/note_body_placeholder" >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/note_body_inp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minLines="5"
+                    android:ems="10"
+                    android:fontFamily="@font/quicksand"
+                    android:inputType="textMultiLine" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </ScrollView>
+    </LinearLayout>
         <Button
             android:id="@+id/btn_save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp"
             android:textSize="20sp"
+            android:fontFamily="@font/quicksand_semibold"
             android:text="Save Note" />
-    </LinearLayout>
-
+    </RelativeLayout>
 </FrameLayout>

@@ -1,5 +1,6 @@
 package com.kyser.daynotes.ui;
 
+import android.app.Service;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -16,6 +17,7 @@ import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import java.util.function.LongFunction;
 
@@ -43,9 +45,16 @@ public class MainActivity extends AppCompatActivity {
             mainBinding.fab.setVisibility(View.GONE);
         }else if(destination.getId() == R.id.noteGrid){
             mainBinding.fab.setVisibility(View.VISIBLE);
+            hideVKB();
         }else if(destination.getId() == R.id.addNote){
             mainBinding.fab.setVisibility(View.GONE);
         }
+    }
+
+    private void hideVKB(){
+        InputMethodManager imm = (InputMethodManager)this.getSystemService(Service.INPUT_METHOD_SERVICE);
+        if( this.getCurrentFocus()!=null)
+          imm.hideSoftInputFromWindow(  this.getCurrentFocus().getWindowToken(), 0);
     }
 
     @Override
@@ -57,5 +66,4 @@ public class MainActivity extends AppCompatActivity {
     public NavController getNavController() {
         return Navigation.findNavController(mainBinding.navHostFragment);
     }
-
 }

@@ -61,10 +61,7 @@ public class NoteView extends Fragment implements TextWatcher {
 
     @Override
     public void afterTextChanged(Editable editable) {
-        mTextUpdate=false;
-        if(!mFragmentBinding.noteBodyInp.getText().toString().equals(getArguments().getString("note")))
-            mTextUpdate = true;
-        if(!mFragmentBinding.noteBodyInp.getText().toString().equals(getArguments().getString("title")))
-            mTextUpdate = true;
+        mTextUpdate = !mFragmentBinding.noteBodyInp.getText().toString().equals(getArguments().getString("note"));
+        mTextUpdate = !mFragmentBinding.noteBodyInp.getText().toString().equals(getArguments().getString("title"));
     }
 }

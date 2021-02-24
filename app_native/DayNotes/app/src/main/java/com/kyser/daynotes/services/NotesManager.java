@@ -50,9 +50,7 @@ public class NotesManager {
     public void addNewNote(String name , String date ,String priority , String body){
         noteService.addNewNote(name,date,priority,body).enqueue(new Callback<List<Note>>() {
             @Override
-            public void onResponse(Call<List<Note>> call, Response<List<Note>> response) {
-
-            }
+            public void onResponse(Call<List<Note>> call, Response<List<Note>> response) {}
 
             @Override
             public void onFailure(Call<List<Note>> call, Throwable t) {
@@ -64,9 +62,19 @@ public class NotesManager {
     public void updateNote(int id, String name , String body){
         noteService.updateNote(id, name,body).enqueue(new Callback<List<Note>>() {
             @Override
-            public void onResponse(Call<List<Note>> call, Response<List<Note>> response) {
+            public void onResponse(Call<List<Note>> call, Response<List<Note>> response) { }
 
+            @Override
+            public void onFailure(Call<List<Note>> call, Throwable t) {
+                System.out.println(t.getMessage());
             }
+        });
+    }
+
+    public void deleteNote(int id){
+        noteService.deleteNote(id).enqueue(new Callback<List<Note>>() {
+            @Override
+            public void onResponse(Call<List<Note>> call, Response<List<Note>> response) { }
 
             @Override
             public void onFailure(Call<List<Note>> call, Throwable t) {
