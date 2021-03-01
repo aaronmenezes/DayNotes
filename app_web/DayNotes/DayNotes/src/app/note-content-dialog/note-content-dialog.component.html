@@ -1,0 +1,32 @@
+<!-- <h2 mat-dialog-title>{{data.name}}</h2> -->
+<div class="example-form" >
+    <mat-form-field   class="example-full-width" >
+        <input type="title" matInput [formControl]="titleFormControl"   [(ngModel)]="noteData.name" > 
+        <mat-error *ngIf="titleFormControl.hasError('email') && !titleFormControl.hasError('required')">
+            Please enter a  title
+        </mat-error>
+        <mat-error *ngIf="titleFormControl.hasError('required')">
+            Title is <strong>required</strong>
+        </mat-error> 
+    </mat-form-field>
+
+    <mat-dialog-content class="mat-typography">
+        <mat-form-field  appearance="fill"  class="example-full-width">
+            <textarea  rows="28"   type="body"  matInput [formControl]="bodyFormControl"   [(ngModel)]="noteData.body" >  
+            </textarea>
+            <mat-error *ngIf="bodyFormControl.hasError('email') && !bodyFormControl.hasError('required')">
+                Please enter some notes
+            </mat-error>
+            <mat-error *ngIf="bodyFormControl.hasError('required')">
+                Notes are <strong>required</strong>
+            </mat-error> 
+        </mat-form-field>
+    </mat-dialog-content> 
+
+    <mat-dialog-actions align="end">
+        <button mat-button  [mat-dialog-close]="['']">Cancel</button>
+        <button mat-button [mat-dialog-close]="['delete',noteData]"  *ngIf="!isNewNote">Delete Note</button>
+        <button mat-button [mat-dialog-close]="['update',noteData]" cdkFocusInitial  *ngIf="!isNewNote" >Update Note</button>
+        <button mat-button [mat-dialog-close]="['new',noteData]" cdkFocusInitial *ngIf="isNewNote" >Add Note</button>
+    </mat-dialog-actions>
+</div>

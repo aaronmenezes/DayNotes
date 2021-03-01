@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,10 +12,15 @@ import { MatIconModule} from '@angular/material/icon';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card'; 
+import { MatDialogModule} from '@angular/material/dialog'; 
+import { MatInputModule} from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NotepageComponent } from './notepage/notepage.component';
+import { NoteContentDialogComponent } from './note-content-dialog/note-content-dialog.component';
  
 
 @NgModule({
@@ -22,13 +28,17 @@ import { NotepageComponent } from './notepage/notepage.component';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    NotepageComponent
+    NotepageComponent,
+    NoteContentDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatSliderModule,MatToolbarModule,MatIconModule,MatButtonModule,MatGridListModule
+    HttpClientModule, 
+    ReactiveFormsModule,
+    MatSliderModule,MatToolbarModule,MatIconModule,MatButtonModule,MatGridListModule,
+    MatCardModule,MatDialogModule,MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

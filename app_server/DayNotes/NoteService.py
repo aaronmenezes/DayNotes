@@ -6,9 +6,10 @@ from time import sleep
 import sqlite3
 import os 
 from pandas import DataFrame
- 
+from flask_cors import CORS
 
 app = Flask(__name__)   
+CORS(app)
 
 """   
 https://stream-canvas-va1.herokuapp.com/ | https://git.heroku.com/stream-canvas-va1.git

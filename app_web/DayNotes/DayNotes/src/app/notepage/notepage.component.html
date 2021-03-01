@@ -1,18 +1,19 @@
 <mat-grid-list cols="5"  rowHeight="1:1" gutterSize=30px style="width: 80vw;">
-    <mat-grid-tile>11111111111111</mat-grid-tile>
-    <mat-grid-tile>22222222222222</mat-grid-tile>
-    <mat-grid-tile>33333333333333</mat-grid-tile>
-    <mat-grid-tile>44444444444444</mat-grid-tile>
-    <mat-grid-tile>11111111111111</mat-grid-tile>
-    <mat-grid-tile>22222222222222</mat-grid-tile>
-    <mat-grid-tile>33333333333333</mat-grid-tile>
-    <mat-grid-tile>44444444444444</mat-grid-tile>
-    <mat-grid-tile>11111111111111</mat-grid-tile>
-    <mat-grid-tile>22222222222222</mat-grid-tile>
-    <mat-grid-tile>33333333333333</mat-grid-tile>
-    <mat-grid-tile>44444444444444</mat-grid-tile>
-    <mat-grid-tile>11111111111111</mat-grid-tile>
-    <mat-grid-tile>22222222222222</mat-grid-tile>
-    <mat-grid-tile>33333333333333</mat-grid-tile>
-    <mat-grid-tile>44444444444444</mat-grid-tile>
+    <mat-grid-tile   *ngFor="let notemodel of noteList">   
+      <div class="card-tile" (click)="openDialog(notemodel)">
+        <div class=card-header> 
+          <p class=header-title style=" display:inline-block;width: auto;">{{ notemodel.name }} </p>        
+          <button mat-icon-button  style=" display:inline-block; float: right;" >
+            <mat-icon>more_vert</mat-icon>
+          </button>  
+        </div>  
+        <div class="card-body">{{ notemodel.body }}</div>
+      </div> 
+    </mat-grid-tile>
+    <mat-grid-tile class="matgrid-add-tile" (click)="openDialog(null)">
+      <div  class="add-tile">
+        <mat-icon aria-hidden="false" [inline]="true">add_circle</mat-icon>
+      </div>
+    </mat-grid-tile>
+    
   </mat-grid-list>

@@ -1,0 +1,12 @@
+.example-form {
+    width: 70vw;
+  } 
+  
+  .example-full-width {
+    width: 100%; 
+  }
+
+  .example-full-width textarea{
+    height: auto;
+    resize: none;
+  }
