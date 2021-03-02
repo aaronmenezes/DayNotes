@@ -14,6 +14,7 @@ mat-grid-tile {
     align-self: flex-start;  
     display:inline-block;
     vertical-align: middle; 
+    cursor: pointer;
 }
 
 .header-title {  
@@ -23,7 +24,8 @@ mat-grid-tile {
     align-self: flex-start;  
     display:inline-block;
     vertical-align: middle; 
-    font-size: medium;    
+    font-size: medium;   
+    cursor: pointer; 
 }
 .card-body{
     display: block; 
@@ -35,10 +37,12 @@ mat-grid-tile {
     overflow: hidden;
     max-height: 9em;
     line-height: 1.8em;
+    cursor: pointer;
 }
 .matgrid-add-tile{
     background: #7cd8ec; 
     border-color: #f7d308; 
+    cursor: pointer;
 }
 .add-tile{ 
     padding: 10px;

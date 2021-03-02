@@ -38,6 +38,13 @@ export class NotepageComponent implements OnInit {
     });
   }
 
+  menuDeleteNote(note:Notemodel){
+    this.configService.deleteNote(note).subscribe(response => {
+      console.log(response);
+      this.getAllNotes();
+    })
+  }
+
   getAllNotes(){
     this.configService.getAllNote().subscribe(data=>{
       this.noteList=data

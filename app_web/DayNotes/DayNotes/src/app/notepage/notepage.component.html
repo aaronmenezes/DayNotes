@@ -3,7 +3,7 @@
     <div class="card-tile" >
       <div class=card-header> 
         <p class=header-title (click)="openDialog(notemodel)">{{ notemodel.name }} </p>        
-        <button mat-icon-button  style="display:inline-block; float: right;" [matMenuTriggerFor]="menu" >
+        <button mat-icon-button  style="display:inline-block; float: right;" [matMenuTriggerFor]="menu"  >
           <mat-icon>more_vert</mat-icon>
         </button>  
       </div>  
@@ -23,8 +23,10 @@
     <mat-icon>low_priority</mat-icon>
     <span>Change Priority</span>
   </button>
-  <button mat-menu-item>
+
+  <button mat-menu-item > 
     <mat-icon>delete</mat-icon>
     <span>Delete Note</span>
   </button>
+
 </mat-menu>
