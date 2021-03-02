@@ -16,6 +16,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule} from '@angular/material/dialog'; 
 import { MatInputModule} from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -37,7 +38,7 @@ import { NoteContentDialogComponent } from './note-content-dialog/note-content-d
     BrowserAnimationsModule,
     HttpClientModule, 
     ReactiveFormsModule,
-    MatSliderModule,MatToolbarModule,MatIconModule,MatButtonModule,MatGridListModule,
+    MatSliderModule,MatToolbarModule,MatIconModule,MatButtonModule,MatGridListModule,MatMenuModule,
     MatCardModule,MatDialogModule,MatInputModule
   ],
   providers: [],
