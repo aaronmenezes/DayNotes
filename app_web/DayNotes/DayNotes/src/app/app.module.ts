@@ -16,7 +16,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule} from '@angular/material/dialog'; 
 import { MatInputModule} from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { MatMenuModule } from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';  
 
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';

@@ -1,5 +1,6 @@
 <mat-grid-list cols="5"  rowHeight="1:1" gutterSize=30px style="width: 80vw;">
-  <mat-grid-tile   *ngFor="let notemodel of noteList">   
+
+  <mat-grid-tile  class="mat-elevation-z4"  *ngFor="let notemodel of noteList" >   
     <div class="card-tile" >
       <div class=card-header> 
         <p class=header-title (click)="openDialog(notemodel)">{{ notemodel.name }} </p>        
@@ -10,15 +11,16 @@
       <div class="card-body" (click)="openDialog(notemodel)">{{ notemodel.body }}</div>
     </div> 
   </mat-grid-tile>
+  
   <mat-grid-tile class="matgrid-add-tile" (click)="openDialog(null)">
     <div  class="add-tile">
       <mat-icon aria-hidden="false" [inline]="true">add_circle</mat-icon>
     </div>
   </mat-grid-tile>    
+
 </mat-grid-list>
 
-<mat-menu #menu="matMenu">
-   
+<mat-menu #menu="matMenu">   
   <button mat-menu-item >
     <mat-icon>low_priority</mat-icon>
     <span>Change Priority</span>
@@ -28,5 +30,4 @@
     <mat-icon>delete</mat-icon>
     <span>Delete Note</span>
   </button>
-
 </mat-menu>
