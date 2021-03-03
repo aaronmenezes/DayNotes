@@ -7,14 +7,18 @@ import { Notemodel } from './notemodel';
 })
 export class ConfigService {
 
-  constructor(private http: HttpClient) { }
+  apiString: "https://day-notes.herokuapp.com";
 
-  public getAllNote(){
-    return this.http.get<Notemodel>("http://localhost:8080/getAllNotes") 
+  constructor(private http: HttpClient) { 
+    this.apiString="https://day-notes.herokuapp.com";
+  }
+
+  public getAllNote(){ 
+    return this.http.get<Notemodel>(this.apiString+"/getAllNotes") 
   }
 
   public updateNote(note:Notemodel){
-    return this.http.get("http://localhost:8080/updateNote",{
+    return this.http.get(this.apiString+"/updateNote",{
       params:{
         id:note.id.toString(),
         name:note.name,
@@ -27,7 +31,7 @@ export class ConfigService {
   }
 
   public deleteNote(note:Notemodel){
-    return this.http.get("http://localhost:8080/deleteNote",{
+    return this.http.get(this.apiString+"/deleteNote",{
       params:{
         id:note.id.toString()        
       },
@@ -37,7 +41,7 @@ export class ConfigService {
 
   
   addNewNote(note:Notemodel) {
-    return this.http.get("http://localhost:8080/addNewNote",{
+    return this.http.get(this.apiString+"/addNewNote",{
       params:{
         name:note.name,
         body:note.body,
