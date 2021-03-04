@@ -18,6 +18,11 @@ export class ConfigService {
     return this.http.get<Notemodel>(this.apiString+"/getAllNotes") 
   }
 
+  public getArchive(){ 
+    return this.http.get<Notemodel>(this.apiString+"/getNoteArchive") 
+  }
+
+
   public updateNote(note:Notemodel){
     return this.http.get(this.apiString+"/updateNote",{
       params:{

@@ -23,14 +23,14 @@ export class NoteArchiveComponent implements OnInit {
   constructor(private configService :ConfigService) {}
 
   ngOnInit(): void {
-    this.getAllNotes();
+    this.getArchive();
   }
 
   convertEpochToDate(time:string){ 
     return  new Date(Number(time));
   }
-  getAllNotes(){
-    this.configService.getAllNote().subscribe(data=>{
+  getArchive(){
+    this.configService.getArchive().subscribe(data=>{
       this.dataSource=data
      });
   }

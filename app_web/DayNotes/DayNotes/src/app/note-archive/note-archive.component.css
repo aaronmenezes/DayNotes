@@ -26,5 +26,6 @@ table {
   .element-description {
     padding: 16px;
     background:rgb(240, 241, 241);
+    width:100%;
   }
    
