@@ -7,7 +7,8 @@ import { Notemodel } from './notemodel';
 })
 export class ConfigService {
 
-  apiString: "https://day-notes.herokuapp.com";
+  apiString: "https://day-notes.herokuapp.com"; 
+  apiLocalString :"https://localhost:8080";
 
   constructor(private http: HttpClient) { 
     this.apiString="https://day-notes.herokuapp.com";
@@ -51,4 +52,6 @@ export class ConfigService {
       observe: 'response'
     })
   } 
+
+  
 }

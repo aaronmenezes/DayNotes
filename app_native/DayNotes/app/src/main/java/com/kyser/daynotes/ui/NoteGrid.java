@@ -9,9 +9,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.PopupMenu;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -44,8 +46,7 @@ public class NoteGrid extends Fragment {
         }
 
         @Override
-        public void onItemDeleteClick(View itemView, Note note) {
-            showDeleteDialog(note);
+        public void onItemMenuClick(View itemView, Note note) {
             showOptionList(itemView,note);
         }
     };
@@ -55,10 +56,11 @@ public class NoteGrid extends Fragment {
         popupMenu.getMenuInflater().inflate(R.menu.note_options,popupMenu.getMenu());
         popupMenu.setOnMenuItemClickListener(menuItem -> {
             if(menuItem.getItemId() == R.id.option_2)
-                deleteNote(note);
+                showDeleteDialog(note);
             if(menuItem.getItemId() == R.id.option_1)
-                 popupMenu.dismiss();
-            return false;
+                showPriorityDialog(note);
+            popupMenu.dismiss();
+            return true;
         });
         popupMenu.setOnDismissListener(popupMenu1 -> {});
         popupMenu.show();
@@ -79,6 +81,28 @@ public class NoteGrid extends Fragment {
         updateNoteList();
     }
 
+    private void showPriorityDialog(Note note){
+        final EditText input = new EditText(getContext());
+        input.setText(note.getPriority()+"");
+        input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_CLASS_NUMBER);
+        new MaterialAlertDialogBuilder(getContext())
+                .setTitle(getResources().getString(R.string.priority_dialog_title))
+                .setMessage(getResources().getString(R.string.priority_dialog_desc))
+                .setView(input)
+                .setPositiveButton(getResources().getString(R.string.delete_dialog_yes),(dialogInterface, i) -> {
+                    note.setPriority(Integer.parseInt(String.valueOf(input.getText())));
+                    updateNotePriority(note);
+                })
+                .setNegativeButton(getResources().getString(R.string.delete_dialog_no),(dialogInterface, i) -> {dialogInterface.dismiss();})
+                .setNeutralButton(getResources().getString(R.string.delete_dialog_cancel),(dialogInterface, i) -> {dialogInterface.dismiss();})
+                .show();
+
+    }
+
+    private void updateNotePriority(Note note){
+          NotesManager.getInstance().updateNotePriority(note.getId(),note.getPriority());
+          updateNoteList();
+    }
     private void updateNoteList() {
         mViewModel.getNoteList().observe( (MainActivity)getContext(),notes -> {
             for(Note t : notes)

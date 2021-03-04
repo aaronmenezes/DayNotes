@@ -22,4 +22,7 @@ public interface NoteService {
 
     @GET("deleteNote")
     Call<List<Note>> deleteNote(@Query("id") int id );
+
+    @GET("updateNotePriority")
+    Call<List<Note>> updateNotePriority(@Query("id") int id, @Query("priority") int priority );
 }

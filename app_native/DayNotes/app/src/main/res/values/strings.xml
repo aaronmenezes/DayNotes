@@ -10,6 +10,8 @@
     <string name="delete_dialog_yes">Yes</string>
     <string name="delete_dialog_cancel">Cancel</string>
     <string name="delete_dialog_no">No</string>
+    <string name="priority_dialog_title">Update Priority</string>
+    <string name="priority_dialog_desc">Set priority [1 - 5]</string>
     <string name="option_1">Change Note priority</string>
     <string name="option_2">Delete Note</string>
 </resources>

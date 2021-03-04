@@ -12,6 +12,7 @@
   }
  
   .content {
+    min-height: 70%;
     display: flex;
     margin: 82px auto 32px;
     padding: 0 16px;

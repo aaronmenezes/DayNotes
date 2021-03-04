@@ -68,15 +68,16 @@ class DatabaseInstance:
 		
 	def delete_note(self,id):
 		cur= self.get_db().cursor()
-		#cur.execute("INSERT INTO note_archive  (key,name, date, priority, body )  VALUES (?,?,?)",(name,date,priority))	
+		cur.execute("""INSERT INTO note_archive (key, name,body,priority,date)
+						SELECT key, name,body,priority,date
+						FROM   NOTES_VIEW where key="""+id)	
 		cur.execute("DELETE from note_list WHERE id = "+id)
 		cur.execute("DELETE from notes WHERE key = "+id)
 		self.get_db().commit()
 		return []		
 
 	
-	'''
-	
+	''' 
 	
 	def get_home_category(self):
 		cur= self.get_db().cursor()

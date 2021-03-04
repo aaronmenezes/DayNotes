@@ -83,4 +83,16 @@ public class NotesManager {
         });
     }
 
+    public void updateNotePriority(int id,int priority){
+        noteService.updateNotePriority(id,priority).enqueue(new Callback<List<Note>>() {
+            @Override
+            public void onResponse(Call<List<Note>> call, Response<List<Note>> response) { }
+
+            @Override
+            public void onFailure(Call<List<Note>> call, Throwable t) {
+                System.out.println(t.getMessage());
+            }
+        });
+    }
+
 }

@@ -1,7 +1,7 @@
 div {
     height: 3vw;
     width: 100%;
-    position: absolute; 
+    position: relative; 
     bottom: 0px; 
     background-color: rgba(144, 164, 174, 0.6); 
     display: inline-block;
