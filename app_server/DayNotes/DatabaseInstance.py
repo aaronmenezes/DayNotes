@@ -75,7 +75,12 @@ class DatabaseInstance:
 		cur.execute("DELETE from notes WHERE key = "+id)
 		self.get_db().commit()
 		return []		
-
+	
+	def get_note_archive(self):
+		cur= self.get_db().cursor()
+		cur.execute("SELECT * from note_archive")
+		r = [dict((cur.description[i][0], value) for i, value in enumerate(row)) for row in cur.fetchall()]
+		return r
 	
 	''' 
 	

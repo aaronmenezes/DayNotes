@@ -55,6 +55,11 @@ def delete_note():
 	cur = DatabaseInstance.getInstance().delete_note(request.args['id'])
 	return jsonify(cur)
 	
+@app.route("/getNoteArchive")
+def get_note_archive():
+	cur = DatabaseInstance.getInstance().get_note_archive()
+	return jsonify(cur)
+	
 if __name__ == "__main__":
 	port = int(os.environ.get("PORT", 8080))
 	app.run(host='0.0.0.0', port=port,debug=True)
