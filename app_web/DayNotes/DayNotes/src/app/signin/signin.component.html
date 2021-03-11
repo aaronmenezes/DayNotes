@@ -1,0 +1,28 @@
+<div id="container" class="container-lg">   
+
+    <form  class="form-group"  (ngSubmit)="onSubmit()" style="padding: 50px;align-items: center;">
+
+        <div class="mb-3 row"  style=" width: 100%;text-align: center;"> 
+            <p  class="banner-title">Enter Credentials</p>
+         </div>
+
+        <div class="mb-3 row" style="padding: 10px;" >             
+            <input class="form-control form-control-lg" type="text"
+                placeholder="user name"
+                required
+                [(ngModel)]="userModel.name" name="name"
+                #name="ngModel">  
+        </div>
+        <div class="mb-3 row" style="padding: 10px;"> 
+            <input type="password" class="form-control" id="inputPassword"
+              placeholder="password"
+              required
+              [(ngModel)]="userModel.pass"  name="pass"
+              #pass="ngModel"> 
+        </div>
+        <div class="mb-3 row" style="padding: 10px;">
+            <button type="submit" class="btn btn-primary mb-3">&nbsp;&nbsp; Sign In  &nbsp;&nbsp; </button>
+        </div>
+    </form>
+    
+</div>

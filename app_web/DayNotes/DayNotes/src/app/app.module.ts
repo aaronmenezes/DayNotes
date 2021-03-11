@@ -4,8 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
  
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule} from '@angular/material/icon';
@@ -25,6 +24,7 @@ import { FooterComponent } from './footer/footer.component';
 import { NotepageComponent } from './notepage/notepage.component';
 import { NoteContentDialogComponent } from './note-content-dialog/note-content-dialog.component';
 import { NoteArchiveComponent } from './note-archive/note-archive.component';
+import { SigninComponent } from './signin/signin.component';
  
 
 @NgModule({
@@ -34,13 +34,15 @@ import { NoteArchiveComponent } from './note-archive/note-archive.component';
     FooterComponent,
     NotepageComponent,
     NoteContentDialogComponent,
-    NoteArchiveComponent
+    NoteArchiveComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule, 
+    FormsModule,
     ReactiveFormsModule,MatTableModule,MatSnackBarModule,
     MatSliderModule,MatToolbarModule,MatIconModule,MatButtonModule,MatGridListModule,MatMenuModule,
     MatCardModule,MatDialogModule,MatInputModule

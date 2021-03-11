@@ -1,0 +1,15 @@
+#container{
+    width: 40vw;
+    height:40vh;
+    background:#667780;
+    border-radius: 10px;
+}
+
+.banner-title{
+  font-size: x-large;
+  color: #ffffff;
+}
+
+button{
+    font-size: medium; 
+}

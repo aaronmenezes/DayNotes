@@ -7,12 +7,14 @@ import { Notemodel } from './notemodel';
 })
 export class ConfigService {
 
-  apiString: "https://day-notes.herokuapp.com"; 
-  apiLocalString :"https://localhost:8080";
+  apiString:string
+  apiProdString= "https://day-notes.herokuapp.com"; 
+  apiLocalString ="https://localhost:8080";
 
   constructor(private http: HttpClient) { 
-    this.apiString="https://day-notes.herokuapp.com";
+    this.apiString=this.apiProdString;
   }
+ 
 
   public getAllNote(){ 
     return this.http.get<Notemodel>(this.apiString+"/getAllNotes") 
